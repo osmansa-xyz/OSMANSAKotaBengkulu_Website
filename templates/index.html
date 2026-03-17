@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSMANSA - MAN 1 Kota Bengkulu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+    <div class="container">
+        <div class="nav-content">
+            <a href="#" class="logo-section">
+                <div class="logo-box">O</div>
+                <div>
+                    <span class="brand-name">OSMANSA</span>
+                    <span class="brand-sub">MAN 1 Bengkulu</span>
+                </div>
+            </a>
+
+            <input type="checkbox" id="nav-toggle" style="display: none;">
+
+            <div class="desktop-menu">
+                <a href="#home">Beranda</a>
+                <a href="#vision">Tentang Kami</a>
+                <a href="#programs">Program Kerja</a>
+                <a href="#structure">Struktur</a>
+                <a href="#event">Event</a>
+                <a href="#contact">Kontak</a>
+                <button class="btn-nav-join">Join Us</button>
+            </div>
+
+            <label for="nav-toggle" class="mobile-toggle">
+                <i data-lucide="menu"></i>
+            </label>
+        </div>
+    </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-badge">
+                    <div class="pulse-dot"></div>
+                    <span>MAN 1 Kota Bengkulu</span>
+                </div>
+                <h1 class="hero-title">OSMANSA</h1>
+                <p class="hero-subtitle">Moving Together, Serving the Madrasah.</p>
+                <a href="#programs" class="btn-hero">
+                    <span>Explore Our Programs</span>
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+	<section id="vision" class="vm-section">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2 style="font-size: 2.5rem; font-weight: 800; color: var(--dark);">Tentang Kami</h2>
+        </div>
+        <div class="vm-grid">
+
+            <div class="vm-card vision-card">
+                <div class="vm-icon">
+                    <i data-lucide="eye" width="30" height="30"></i>
+                </div>
+                <h3 style="text-align: center;">Visi</h3>
+                <p>{{ visi }}</p>
+            </div>
+
+            <div class="vm-card mission-card">
+                <div class="vm-icon">
+                    <i data-lucide="target" width="30" height="30"></i>
+                </div>
+                <h3 style="text-align: center;">Misi</h3>
+                <ul class="mission-list">
+                    {% for misi in misi_list %}
+                    <li>
+                        <div class="mission-check">{{ loop.index }}</div>
+                        <p>{{ misi }}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            
+        </div>
+    </section>
+
+    <section id="programs" class="proker-section" style="background: var(--light);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 800; color: var(--dark);">Program Kerja</h2>
+            </div>
+                
+            <div class="proker-grid">
+                {% for judul, desc, icon in proker_list %}
+                    <div class="vm-card mission-card">
+                        <div class="vm-icon">
+                            <i data-lucide="{{ icon }}"></i>
+                        </div>
+                        <h3>{{ judul }}</h3>
+                        <p>{{ desc }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="structure" class="structure-section">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2 style="font-size: 2.5rem; font-weight: 800; color: var(--dark);">Struktur Kepengurusan</h2>
+            <p style="color: var(--text-gray);">Masa Bakti 2025/2026</p>
+        </div>
+
+        <div class="slider-nav">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 20px;">
+                <button class="nav-btn" onclick="moveSlide(-1)">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                
+                <h2 id="titleText" class="divisi-title" style="margin: 0; min-width: 200px; text-align: center; color:#8fb935;"></h2>
+                
+                <button class="nav-btn" onclick="moveSlide(1)">
+                    <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="slider-wrapper">
+                {% for divisi, list_nama in pengurus.items() %}
+                <div class="slide {% if loop.first %}active{% endif %}" data-divisi="{{ divisi }}">
+                    <div class="grid-pimpinan" style="display: flex; justify-content: center; flex-wrap: wrap;">
+                        {% for item in list_nama %}
+                        <div class="card-pimpinan">
+                            <div class="img-box-big"></div>
+                            <h4>{{ item.split(' - ')[0] }}</h4>
+                            <p>{{ item.split(' - ')[1] }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+    </section>
+
+    <section id="event" style="background: var(--light); padding-top: 2%; padding-bottom: 2%;">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2 style="font-size: 2.5rem; font-weight: 800; color: var(--dark);">Event</h2>
+        </div>
+        <div class="event-container">
+            {% for event in event_list %}
+            <div class="event-row">
+                <div class="event-img-box">
+                    <img src="{{ url_for('static', filename='images/' + event[1]) }}" alt="{{ event[0] }}">
+                </div>
+                <div class="event-text">
+                    <h3>{{ event[0] }}</h3>
+                    <p>{{ event[2] }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    </main>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-logo">OSMANSA</h3>
+                    <p class="footer-desc">Wadah utama pengembangan kepemimpinan dan kreativitas siswa di lingkungan MAN 1 Kota Bengkulu.</p>
+                </div>
+                <div>
+                    <h4 class="footer-h4">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#vision">Tentang Kami</a></li>
+                        <li><a href="#programs">Program Kerja</a></li>
+                        <li><a href="#structure">Struktur</a></li>
+                        <li><a href="#event">Event</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-h4">Contact Us</h4>
+                    <div class="contact-info">
+                        <a href="https://maps.app.goo.gl/jCtPjPjxQtsixZL98?g_st=aw" target="_blank">
+                            <i data-lucide="map-pin" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i>
+                            <span>Jl. Cimanuk, Padang Harapan, Kota Bengkulu</span>
+                        </a>
+                    </div>
+                    <div class="contact-info">
+                        <a href="mailto:osmansakotabengkulu@gmail.com">
+                            <i data-lucide="mail" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i>
+                            <span>osmansakotabengkulu@gmail.com</span>
+                        </a>
+                    </div>
+                    <div class="contact-info">
+                        <a href="https://wa.me/62882018220334" target="_blank">
+                            <i data-lucide="phone" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i>
+                            <span>+62 882 0182 20334</span>
+                        </a>
+                    </div>
+                    <div class="contact-info">
+                        <a href="https://www.instagram.com/osmansa_1" target="_blank">
+                            <i data-lucide="instagram" style="color: var(--primary); width: 18px; flex-shrink: 0;"></i>
+                            <span>@osmansa_1</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="color: var(--text-gray); font-size: 0.8rem;">&copy; <span id="year"></span> OSMANSA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        let currentIdx = 0;
+        const slides = document.querySelectorAll('.slide');
+        const titleElement = document.getElementById('titleText');
+
+        function moveSlide(direction) {
+            slides[currentIdx].style.display = 'none';
+            slides[currentIdx].classList.remove('active');
+            
+            currentIdx = (currentIdx + direction + slides.length) % slides.length;
+            
+            slides[currentIdx].style.display = 'block';
+            slides[currentIdx].classList.add('active');
+            
+            titleElement.innerText = slides[currentIdx].dataset.divisi;
+        }
+
+        slides.forEach((s, i) => {
+            s.style.display = i === 0 ? 'block' : 'none';
+        });
+
+        if (slides.length > 0) {
+            titleElement.innerText = slides[0].dataset.divisi;
+        }
+    </script>
+</body>
+</html>
