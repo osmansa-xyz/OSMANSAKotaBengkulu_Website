@@ -613,10 +613,45 @@ color: var(--primary);
 }
 
 @media (min-width: 769px) {
-.grid-pimpinan {
-    justify-content: center;
-    flex-wrap: wrap;
+    .grid-pimpinan {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 }
+
+@media screen and (max-width: 768px) {
+    .event-row, 
+    .event-row:nth-child(even) {
+        display: flex !important;
+        flex-direction: column !important; /* Foto di atas, teks di bawah */
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        gap: 15px !important;
+        padding: 0 !important;
+    }
+
+    .event-img-box {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: none !important; /* Matikan flex basis desktop */
+        height: 250px !important; /* Atur tinggi yang pas untuk HP */
+        margin: 0 auto !important;
+    }
+
+    .event-text {
+        width: 100% !important;
+        padding: 10px 20px !important;
+    }
+
+    .event-text h3 {
+        font-size: 1.5rem !important;
+        margin-top: 10px !important;
+    }
+
+    .event-row:nth-child(even) .event-text {
+        text-align: center !important;
+    }
 }
 
 @media (max-width: 480px) {
