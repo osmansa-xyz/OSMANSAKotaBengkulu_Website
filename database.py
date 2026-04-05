@@ -66,7 +66,6 @@ def init_db():
         ('Faiza Adzka Afdhalia', 'SEKRETARIS', 'PENGURUS INTI'),
         ('Diah Melati Lubis', 'BENDAHARA', 'PENGURUS INTI'),
         ('Syauqi Raudhah Firdaus', 'KOORDINATOR', 'HUMAS MULTIMEDIA'),
-        ('Muhammad Alfikri', 'ANGGOTA', 'HUMAS MULTIMEDIA'),
         ('Chelsha Kinah R.', 'ANGGOTA', 'HUMAS MULTIMEDIA'),
         ('El Fahri Pradipta', 'KOORDINATOR', 'KESENIAN & KEAGAMAAN ISLAMI'),
         ('Adella Hesti M.', 'ANGGOTA', 'KESENIAN & KEAGAMAAN ISLAMI'),
