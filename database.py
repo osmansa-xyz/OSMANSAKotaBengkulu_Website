@@ -100,7 +100,8 @@ def setup_event():
         ('Bulan Bahasa', 'bahasa.jpg', 'Perayaan untuk mengapresiasi kekayaan bahasa dan sastra melalui berbagai lomba kreatif seperti ranking 1, dongeng, dan sayembara maskot.'),
         ('Liga MAN', 'liga.jpg', 'Kompetisi olahraga tahunan antarkelas yang dirancang untuk membangun sportivitas, kerjasama tim, dan kesehatan fisik siswa.'),
         ('Maulid Nabi', 'maulid.jpg', 'Perayaan hari lahir Nabi Muhammad SAW yang dirayakan dengan penuh syukur melalui lantunan shalawat, tausiyah, serta aksi sosial.'),
-        ('Social Project Ramadan: MABAR#1 (Madrasah Berburu Amal Ramadan)', 'spr.jpg', 'Proyek sosial mandiri OSIM MAN 1 Kota Bengkulu yang diisi dengan penyaluran bantuan ke panti asuhan dan pembagian takjil gratis di sekitar lingkungan madrasah selama bulan Ramadan.')
+        ('Social Project Ramadan: MABAR#1 (Madrasah Berburu Amal Ramadan)', 'spr.jpg', 'Proyek sosial mandiri OSIM MAN 1 Kota Bengkulu yang diisi dengan penyaluran bantuan ke panti asuhan dan pembagian takjil gratis di sekitar lingkungan madrasah selama bulan Ramadan.'),
+        ('Class Meeting', 'clm.jpg', 'Kegiatan rutin pasca-ujian semester yang berfungsi sebagai sarana penyegaran sekaligus wadah penyaluran bakat siswa di bidang olahraga, seni, dan kreativitas.')
     ]
     cursor.executemany("INSERT INTO event (nama_event, foto, deskripsi) VALUES (?, ?, ?)", event_data)
     
